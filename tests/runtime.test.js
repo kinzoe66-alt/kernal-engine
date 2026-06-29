@@ -1,4 +1,7 @@
 const { Runtime } = require("../runtime/runtime");
+const { System } = require("../system/system");
+const { Environment } = require("../environment/environment");
+const { Application } = require("../application/application");
 const { Cartridge } = require("../kernel/cartridge/cartridge");
 const { Boundary } = require("../kernel/boundary/boundary");
 
@@ -26,8 +29,28 @@ const cartridge = new Cartridge({
   ]
 });
 
+const application = new Application({
+  id: "banking-app",
+  version: "1.0.0",
+  cartridge
+});
+
+const environment = new Environment({
+  id: "bank",
+  version: "1.0.0",
+  applications: [application]
+});
+
+const system = new System({
+  id: "enterprise",
+  version: "1.0.0",
+  environments: [environment]
+});
+
 const result = runtime.execute(
-  cartridge,
+  system,
+  "bank",
+  "banking-app",
   observed
 );
 

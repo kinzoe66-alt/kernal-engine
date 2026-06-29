@@ -1,4 +1,5 @@
 const { Runtime } = require("../runtime/runtime");
+const { System } = require("../system/system");
 const { Environment } = require("../environment/environment");
 const { Application } = require("../application/application");
 const { Cartridge } = require("../kernel/cartridge/cartridge");
@@ -40,8 +41,15 @@ const environment = new Environment({
   applications: [application]
 });
 
+const system = new System({
+  id: "enterprise",
+  version: "1.0.0",
+  environments: [environment]
+});
+
 const result = runtime.execute(
-  environment,
+  system,
+  "bank",
   "banking-app",
   observed
 );
