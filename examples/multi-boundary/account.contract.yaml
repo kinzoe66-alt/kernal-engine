@@ -1,0 +1,3 @@
+requires:
+  authenticated: true
+  account_exists: true

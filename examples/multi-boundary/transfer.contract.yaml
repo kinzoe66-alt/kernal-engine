@@ -1,0 +1,3 @@
+requires:
+  authorized: true
+  balance_available: true
