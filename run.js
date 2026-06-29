@@ -1,10 +1,21 @@
 const { evaluate } = require("./kernel");
-const { loadObservedReality } = require("./loaders/json/loadObservedReality");
-const { loadExpectedReality } = require("./loaders/yaml/loadExpectedReality");
 
-const observed = loadObservedReality("examples/banking.observed.json");
-const expected = loadExpectedReality("examples/banking.contract.yaml");
+const { loadObservedReality } = require("./loaders/json/loadObservedReality");
+const { loadEvaluationContract } = require("./loaders/yaml/loadEvaluationContract");
+
+const observed = loadObservedReality(
+  "examples/banking.observed.json"
+);
+
+const contract = loadEvaluationContract(
+  "examples/banking.contract.yaml"
+);
+
+const result = evaluate(
+  observed,
+  contract
+);
 
 console.log(
-  JSON.stringify(evaluate(observed, expected), null, 2)
+  JSON.stringify(result, null, 2)
 );

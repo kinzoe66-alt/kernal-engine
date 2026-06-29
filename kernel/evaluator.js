@@ -1,8 +1,8 @@
 const { EvaluationResult } = require("./model/evaluationResult");
 
-function evaluate(observedReality, expectedReality) {
+function evaluate(observedReality, evaluationContract) {
   const observed = observedReality.data;
-  const expected = expectedReality.data;
+  const expected = evaluationContract.expectedReality.data;
 
   const requires = expected.requires || {};
   const missing = [];

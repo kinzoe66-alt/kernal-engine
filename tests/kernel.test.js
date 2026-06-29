@@ -1,11 +1,20 @@
 const { evaluate } = require("../kernel");
+
 const { loadObservedReality } = require("../loaders/json/loadObservedReality");
-const { loadExpectedReality } = require("../loaders/yaml/loadExpectedReality");
+const { loadEvaluationContract } = require("../loaders/yaml/loadEvaluationContract");
 
-const observed = loadObservedReality("examples/banking.observed.json");
-const expected = loadExpectedReality("examples/banking.contract.yaml");
+const observed = loadObservedReality(
+  "examples/banking.observed.json"
+);
 
-const result = evaluate(observed, expected);
+const contract = loadEvaluationContract(
+  "examples/banking.contract.yaml"
+);
+
+const result = evaluate(
+  observed,
+  contract
+);
 
 if (!result.satisfied) {
   console.error("FAIL");
