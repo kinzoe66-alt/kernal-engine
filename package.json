@@ -1,0 +1,11 @@
+{
+  "name": "kernal-engine",
+  "version": "0.1.0",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node run.js"
+  },
+  "dependencies": {
+    "yaml": "^2.8.0"
+  }
+}
