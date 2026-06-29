@@ -1,0 +1,4 @@
+requires:
+  authenticated: true
+  foreign_object_requested: true
+  foreign_object_accessible: false
